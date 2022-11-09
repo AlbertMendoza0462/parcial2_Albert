@@ -1,6 +1,5 @@
 package edu.ucne.parcial2_albert.ui.entity
 
-import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel

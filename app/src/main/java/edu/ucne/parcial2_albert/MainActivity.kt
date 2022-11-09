@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
+import edu.ucne.parcial2_albert.ui.entity.ConsultaVerboScreen
 import edu.ucne.parcial2_albert.ui.theme.Parcial2_AlbertTheme
 
 @AndroidEntryPoint
@@ -25,6 +26,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Greeting("Android")
+                    ConsultaVerboScreen()
                 }
             }
         }

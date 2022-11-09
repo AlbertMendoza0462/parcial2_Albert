@@ -13,8 +13,8 @@ class VerboApiRepository @Inject constructor(
     suspend fun getVerbos(): List<VerbosResponseDto> {
         try {
             return withContext(Dispatchers.IO) {
-                val resonse = api.GetVerbos()
-                resonse.body() ?: emptyList()
+                val response = api.GetVerbos()
+                response.body() ?: emptyList()
             }
         } catch (e: Exception) {
             throw e

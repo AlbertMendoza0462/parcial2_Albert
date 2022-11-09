@@ -8,6 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -29,36 +30,38 @@ fun ConsultaVerboScreen(
         ) {
             Column(
                 modifier = Modifier
-                    .padding(it)
                     .padding(8.dp)
             ) {
                 val lista by viewModel.uiState.collectAsState()
 
+                Text(text = lista.error)
                 LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                    item {
-                        Row() {
-                            Text(
-                                text = "Id",
-                                modifier = Modifier
-                                    .border(width = 1.dp, color = Color.Black)
-                                    .width(50.dp)
-                                    .padding(8.dp)
-                            )
-                        }
-                    }
                     items(lista.verbos) {
-                        Row() {
-                            Text(
-                                text = it.VerboId.toString(),
+                        Row(
+                            modifier = Modifier.padding(15.dp)
+                        ) {
+                            Card(
                                 modifier = Modifier
-                                    .border(width = 1.dp, color = Color.Black)
-                                    .width(50.dp)
-                                    .padding(8.dp)
-                            )
-                            AsyncImage(
-                                model = it.Imagen,
-                                contentDescription = null
-                            )
+                                    .fillMaxWidth(),
+                                elevation = 10.dp
+                            ) {
+                                Column(
+                                    modifier = Modifier.padding(15.dp)
+                                ) {
+                                    Text(text = "Verbo: " + it.Verbo)
+                                    Text(text = "Categoria: " + it.Categoria)
+                                    Text(text = "Nivel: " + it.Nivel)
+                                    Row(
+                                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                                    ) {
+                                        AsyncImage(
+                                            model = it.Imagen,
+                                            contentDescription = it.Verbo,
+                                            modifier = Modifier.height(200.dp)
+                                        )
+                                    }
+                                }
+                            }
                         }
                     }
                 }
